@@ -47,4 +47,16 @@ class Console
         $this->manufacturer = $manufacturer;
     }
     
+    // Hydratation
+    public static function hydrate(array $data): Console
+    {
+        $console = new Console($data["name"], $data["manufacturer"]);
+
+        //test si ConsoleId existe
+        if (isset($data["id"])) {
+            $console->setId($data["id"]);
+        }
+        //retourner un objet Console
+        return $console;
+    }
 }

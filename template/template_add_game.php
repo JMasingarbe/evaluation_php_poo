@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><?= $title ??  "" ?></title>
 </head>
 <body>
     <h1>Ajouter un jeu</h1>
@@ -20,13 +20,22 @@
 
         <label for="console">Plateforme :</label>
         <select name="console" id="console">
-            <option value="PlayStation 5">PlayStation 5</option>
-            <option value="Switch">Switch</option>
-            <option value="Xbox Series X">Xbox Series X</option>
-            <option value="Steam Deck">Steam Deck</option>
+            <option value="">Choisir une plateforme</option>
+            <?php foreach ($data["consoles"] ?? [] as $console) : ?>
+                <option value="<?= $console["id"] ?>"><?= $console["name"] ?></option>
+            <?php endforeach ?>
         </select>
 
         <button type="submit" name="submit">Ajouter le jeu</button>
     </form>
+    
+    <?php if (!empty($data["errors"])) : ?>
+        <p><?= $data["errors"] ?></p>
+    <?php endif ?>
+    
+    <?php if (!empty($data["valid"])) : ?>
+        <p><?= $data["valid"] ?></p>
+    <?php endif ?>
+
 </body>
 </html>
