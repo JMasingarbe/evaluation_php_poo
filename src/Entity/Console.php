@@ -52,11 +52,9 @@ class Console
     {
         $console = new Console($data["name"], $data["manufacturer"]);
 
-        //test si ConsoleId existe
-        if (isset($data["id"])) {
-            $console->setId($data["id"]);
-        }
-        //retourner un objet Console
+        $console->setId($data["id"]);
+
+        // Retourner un objet Console
         return $console;
     }
 }

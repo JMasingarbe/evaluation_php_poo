@@ -32,6 +32,7 @@ class GameRepository
 
             $stmt = $this->connect->prepare($sql);
             
+            // On affecte les valeurs de notre objet entrant à la requête
             $stmt->bindValue(1, $game->getTitle(), \PDO::PARAM_STR);
             $stmt->bindValue(2, $game->getType(), \PDO::PARAM_STR);
             $stmt->bindValue(3, $game->getPublishAt()->format("Y-m-d"), \PDO::PARAM_STR);
@@ -39,10 +40,12 @@ class GameRepository
 
             $stmt->execute();
 
+            // On récupère l'id de l'objet enregistré
             $id = $this->connect->lastInsertId();
             $game->setId($id);
 
         } catch (\PDOException $e) {
+            // S'il y a une erreur renvoie null
             echo "Erreur : " . $e->getMessage(); 
             return null;
         }

@@ -38,7 +38,7 @@ class ConsoleRepository
         $consoles = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         // Par défaut \PDO::FETCH_ASSOC dans Mysql.php
 
-        // Si on utilise la fonction d'hydratation
+        // Si on veut utiliser la fonction d'hydratation
         // foreach ($data as $console) {
         //     $consoles[] = Console::hydrate($console);
         // }
@@ -51,8 +51,8 @@ class ConsoleRepository
     }
 
     /**
-     * Méthode qui retourne la liste des consoles (Console)
-     * @return ?Console Retourne le tableau des consoles (Console)
+     * Méthode qui retourne la console (Console) qui correspond à un id
+     * @return ?Console Retourne une console (Console) si elle existe sinon null
      * @throws \Exception Erreurs SQL
      */
     public function findConsoleById(int $id): ?Console 
