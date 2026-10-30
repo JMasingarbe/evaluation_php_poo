@@ -30,6 +30,6 @@ switch ($path) {
             $gameController->showAllGames();
             break;
         default:
-            $errorController->error404();
+            echo "404";
             break;
     }
