@@ -91,6 +91,10 @@ class GameController extends AbstractController
      */
     public function showAllGames(): mixed 
     {
-        return "template avec la méthode render";
+        $data = [];
+        $games = $this->gameRepository->findAllGames();
+        $data["games"] = $games;
+
+        return $this->render('show_all_games', "Tous les jeux", $data ?? []);
     }
 }

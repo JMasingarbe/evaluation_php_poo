@@ -59,7 +59,7 @@ class GameRepository
     {
         try {
 
-            $sql = "SELECT vg.title, vg.type, vg.publish_at, c.name FROM video_game AS vg
+            $sql = "SELECT vg.title, vg.type, vg.publish_at, c.name AS console FROM video_game AS vg
                         INNER JOIN console AS c ON c.id = vg.id_console";
 
             $stmt = $this->connect->prepare($sql);
