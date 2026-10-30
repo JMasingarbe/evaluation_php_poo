@@ -32,7 +32,7 @@ class GameController extends AbstractController
      */
     public function addGame(): mixed 
     {
-        return "template avec la méthode render";
+        return $this->render('add_game', 'Ajouter un jeu', $data ?? []);
     }
 
     /**
